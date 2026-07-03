@@ -1,0 +1,34 @@
+services:
+  app:
+    build:
+      context: .
+      target: prod
+    ports:
+      - '3000:3000'
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/librarypro
+      - JWT_SECRET=super-secret-key-change-in-production
+      - JWT_EXPIRATION=1d
+      - FINE_RATE_PER_DAY=1.5
+      - THROTTLER_TTL=60000
+      - THROTTLER_LIMIT=100
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
+  mongodb:
+    image: mongo:8.0
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  mongo_data:
