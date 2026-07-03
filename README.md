@@ -342,16 +342,6 @@ docker-compose down
 
 ---
 
-## Screenshots
-
-Below are typical workflow layouts and representations of the API interfaces:
-
-### Swagger UI API Interface
-![Swagger UI Interface](https://raw.githubusercontent.com/swagger-api/swagger-ui/master/docs/images/logo_small.png)
-
-### MongoDB Database Collections
-![MongoDB Compas Collections Screenshot](https://raw.githubusercontent.com/mongodb/mongo-tools/master/logo-compass.png)
-
 ### Project Folder Directory Tree
 ```text
 .
